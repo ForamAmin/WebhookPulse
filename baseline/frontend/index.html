@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MockShop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <span class="logo">MockShop ~ Baseline</span>
+      <nav class="nav-links">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#cart-summary">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="catalogue" class="catalogue">
+      <h1 class="section-title">Products</h1>
+      <div class="grid" id="product-grid">
+        <!-- Product cards are inserted here by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer id="cart-summary" class="cart-bar">
+    <div class="cart-bar-inner">
+      <div class="cart-info">
+        <span id="cart-count">0 items</span>
+        <span class="cart-total" id="cart-total">₹0</span>
+      </div>
+      <button id="pay-btn" class="pay-btn" disabled>Click to Pay</button>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
