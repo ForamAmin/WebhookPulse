@@ -1,6 +1,24 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
+import os
+from dotenv import load_dotenv
+from pymongo import MongoClient
+import json
+from datetime import datetime, timezone
+
+load_dotenv()
+MONGODB_URI = os.getenv("MONGODB_URI")
+
+#Connect to mongodb :
+client = MongoClient(MONGODB_URI)
+
+db = client["webhookpulse_baseline"]
+webhook_events = db["webhook_events"]
+
+client.admin.command("ping")
+
+print("MongoDB connected successfully!")
 
 app = FastAPI()
 
@@ -36,6 +54,7 @@ async def create_payment(request: Request):
             json={
                 "amount": amount,
                 "currency": "INR",
+                "return_url": "http://127.0.0.1:3000/baseline/frontend/index.html",
             },
         )
 
@@ -63,6 +82,69 @@ async def create_payment(request: Request):
 # reach "127.0.0.1" since it's a real internet-hosted service.
 @app.post("/webhook")
 async def webhook(request: Request):
-    event = await request.json()
-    print("Payment done:", event)
-    return {"message": "webhook received"}
+
+    # Capture the raw request body
+    raw_body = await request.body()
+
+    # Capture headers
+    headers = dict(request.headers)
+
+    # Try to identify the provider from recognizable headers
+    provider = "unknown"
+
+    if "x-github-event" in headers:
+        provider = "github"
+    elif "x-razorpay-signature" in headers:
+        provider = "razorpay"
+    elif "stripe-signature" in headers:
+        provider = "stripe"
+
+    # Try to parse JSON
+    try:
+        payload = json.loads(raw_body)
+    except json.JSONDecodeError:
+        payload = None
+
+    # Determine event type when possible
+    event_type = None
+
+    if provider == "github":
+        event_type = headers.get("x-github-event")
+
+    elif isinstance(payload, dict):
+        event_type = (
+            payload.get("event")
+            or payload.get("event_type")
+            or payload.get("type")
+        )
+
+    # Store the webhook
+    webhook_document = {
+        "received_at": datetime.now(timezone.utc),
+        "provider": provider,
+        "event_type": event_type,
+
+        "request": {
+            "method": request.method,
+            "path": request.url.path,
+            "query_params": dict(request.query_params),
+            "source_ip": request.client.host if request.client else None,
+            "headers": headers
+        },
+
+        "raw_body": raw_body.decode("utf-8", errors="replace"),
+
+        "payload": payload
+    }
+
+    result = webhook_events.insert_one(webhook_document)
+
+    print("WEBHOOK RECEIVED")
+    print("Provider:", provider)
+    print("Event type:", event_type)
+    print("Stored MongoDB ID:", result.inserted_id)
+
+    return {
+        "message": "webhook received",
+        "stored": True
+    }
