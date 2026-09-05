@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
 
-#Connect to mongodb :
+#Connect to mongodb to store webhook events.:
 client = MongoClient(MONGODB_URI)
 
 db = client["webhookpulse_baseline"]
