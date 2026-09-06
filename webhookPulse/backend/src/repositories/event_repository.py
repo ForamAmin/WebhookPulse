@@ -25,3 +25,22 @@ def get_event_by_dedupe_key(
             "dedupe_key": dedupe_key,
         }
     )
+
+def update_event_status(
+    event_id: str,
+    tenant_id: str,
+    status: str,
+    attempt_count: int,
+):
+    return events_collection.update_one(
+        {
+            "event_id": event_id,
+            "tenant_id": tenant_id,
+        },
+        {
+            "$set": {
+                "status": status,
+                "attempt_count": attempt_count,
+            }
+        },
+    )

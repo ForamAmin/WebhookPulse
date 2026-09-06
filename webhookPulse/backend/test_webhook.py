@@ -4,7 +4,7 @@ import hmac
 import json
 import requests
 
-ENDPOINT_ID = "ep_M9z6731d_JcEYG_2Qacx0Q"
+ENDPOINT_ID = "ep__GeG0u_P8NyNC8fpUYrhEQ"
 SIGNING_SECRET = "test-secret"
 
 payload = {
@@ -36,7 +36,7 @@ response = requests.post(
     headers={
         "Content-Type": "application/json",
         "X-Razorpay-Signature": signature,
-        "X-Razorpay-Event-Id": "evt_provider_test_006",
+        "X-Razorpay-Event-Id": "evt_provider_test_011",
     },
 )
 
