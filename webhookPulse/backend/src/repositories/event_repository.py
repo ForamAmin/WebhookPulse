@@ -6,13 +6,22 @@ def create_event(document: dict):
     return document
 
 
-def get_event_by_id(
-    event_id: str,
-    tenant_id: str,
-):
+def get_event_by_id(event_id: str, tenant_id: str):
     return events_collection.find_one(
         {
             "event_id": event_id,
             "tenant_id": tenant_id,
+        }
+    )
+
+
+def get_event_by_dedupe_key(
+    endpoint_id: str,
+    dedupe_key: str,
+):
+    return events_collection.find_one(
+        {
+            "endpoint_id": endpoint_id,
+            "dedupe_key": dedupe_key,
         }
     )
