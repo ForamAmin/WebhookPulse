@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
 from src.routes.auth_routes import router as auth_router
+from src.routes.endpoint_routes import router as endpoint_router
+from src.routes.webhook_routes import router as webhook_router
 
 
 app = FastAPI(
@@ -11,11 +13,13 @@ app = FastAPI(
 
 
 app.include_router(auth_router)
+app.include_router(endpoint_router)
+app.include_router(webhook_router)
 
 
 @app.get("/health")
 def health():
     return {
-        "status": "running webhookPulse backend / healthy !",
+        "status": "ok",
         "service": "webhookpulse",
     }
