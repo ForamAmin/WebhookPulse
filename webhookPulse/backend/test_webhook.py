@@ -5,7 +5,7 @@ import json
 import requests
 
 ENDPOINT_ID = "ep_eAJNofge733LhhEODxyagQ"
-SIGNING_SECRET = "test-secret-123"
+SIGNING_SECRET = "fake-key"
 
 payload = {
     "event": "payment.captured",

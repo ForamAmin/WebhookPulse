@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uuid
 
 from src.routes.auth_routes import router as auth_router
 from src.routes.endpoint_routes import router as endpoint_router
