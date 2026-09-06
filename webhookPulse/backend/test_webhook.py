@@ -36,7 +36,7 @@ response = requests.post(
     headers={
         "Content-Type": "application/json",
         "X-Razorpay-Signature": signature,
-        "X-Razorpay-Event-Id": "evt_provider_test_002",
+        "X-Razorpay-Event-Id": "evt_provider_test_006",
     },
 )
 

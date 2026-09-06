@@ -1,12 +1,14 @@
-import json
-import redis
-import time
-from src.repositories.event_repository import get_event_by_id
 import httpx
+import redis
+import secrets
+import time
+from datetime import datetime, timezone
 
 from src.infrastructure.redis import redis_client, WEBHOOK_STREAM
 from src.repositories.endpoint_repository import get_endpoint_by_id
-
+from src.repositories.event_repository import get_event_by_id
+from src.models.delivery_attempt import create_delivery_attempt_document
+from src.repositories.delivery_attempt_repository import create_delivery_attempt
 
 def process_event(message_id: str, data: dict):
     event_id = data["event_id"]
@@ -35,19 +37,66 @@ def process_event(message_id: str, data: dict):
 
     print(f"Delivering to: {destination_url}")
 
-    payload = event["payload"]
+    attempt_number = event.get("attempt_count", 0) + 1
 
-    with httpx.Client(timeout=10.0) as client:
-        response = client.post(
-            destination_url,
-            json=payload,
-            headers={
-                "X-WebhookPulse-Event-ID": event_id,
-                "X-WebhookPulse-Correlation-ID": event["correlation_id"],
-            },
-        )
+    started_at = datetime.now(timezone.utc)
+    start_time = time.perf_counter()
 
-    print(f"Destination response: {response.status_code}")
+    status_code = None
+    response_body = None
+    error = None
+
+    try:
+        with httpx.Client(timeout=10.0) as client:
+            response = client.post(
+                destination_url,
+                json=event["payload"],
+                headers={
+                    "X-WebhookPulse-Event-ID": event_id,
+                    "X-WebhookPulse-Correlation-ID": event["correlation_id"],
+                },
+            )
+
+        status_code = response.status_code
+        response_body = response.text
+
+        print(f"Destination response: {status_code}")
+
+    except Exception as e:
+        error = str(e)
+        print(f"Delivery error: {error}")
+
+    end_time = time.perf_counter()
+    completed_at = datetime.now(timezone.utc)
+
+    response_time_ms = (end_time - start_time) * 1000
+
+    attempt_document = create_delivery_attempt_document(
+        attempt_id=f"att_{secrets.token_urlsafe(16)}",
+        tenant_id=tenant_id,
+        event_id=event_id,
+        attempt_number=attempt_number,
+        status_code=status_code,
+        response_time_ms=response_time_ms,
+        response_body=response_body,
+        error=error,
+        started_at=started_at,
+        completed_at=completed_at,
+    )
+
+    print("Saving delivery attempt to MongoDB...")
+
+    try:
+        create_delivery_attempt(attempt_document)
+
+        print(
+        f"Attempt #{attempt_number} recorded "
+        f"({response_time_ms:.2f} ms)"
+    )
+
+    except Exception as e:
+        print(f"FAILED TO SAVE DELIVERY ATTEMPT: {e}")
+        raise   
 
 def run_worker():
     print("WebhookPulse worker started")
