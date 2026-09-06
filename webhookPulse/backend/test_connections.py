@@ -1,3 +1,4 @@
+# This script tests the connections to MongoDB and Redis. It attempts to ping both databases and prints the connection status.
 from src.infrastructure.database import client, db
 from src.infrastructure.redis import redis_client
 

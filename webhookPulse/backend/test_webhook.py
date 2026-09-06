@@ -1,3 +1,4 @@
+# This script simulates a webhook request to the backend server for testing purposes.
 import hashlib
 import hmac
 import json
