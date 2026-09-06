@@ -140,3 +140,18 @@ Avoid "replaces Hookdeck" — the honest pitch is "built minimal, working versio
 - [ ] provider_schemas fingerprint strategy: snapshot-first-N vs rolling consensus
 - [ ] Exact demo provider(s): Stripe test webhooks recommended first
 - [ ] Diff algorithm edge cases: nested objects, arrays — define comparison depth
+  
+## Related Work
+
+Webhook reliability patterns are well-documented in industry guides and academic literature:
+
+- **arXiv:2607.15529** (2026): Two-Path Status Verification for messaging pipelines [147]
+- **arXiv:2608.00783** (2026): Safety invariants for agent orchestration, including duplicate webhook delivery [148]
+- **InvokeBot** (2026): Webhook Reliability Patterns — 20+ patterns for production systems [149]
+- **HookListener** (2026): State of Webhooks 2025–2026 — best practices for provider abstraction, idempotency, async processing [155]
+
+This project does not claim novelty in the reliability patterns themselves.
+
+The goal is **pedagogical**: to understand these patterns by first experiencing the failure modes through baseline experiments, then implementing the solutions.
+
+This approach follows classic engineering education patterns (e.g., implementing TCP to understand networking, building a database to understand ACID).
