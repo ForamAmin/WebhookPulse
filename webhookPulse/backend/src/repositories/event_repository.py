@@ -44,3 +44,14 @@ def update_event_status(
             }
         },
     )
+
+def get_event_details(
+    event_id: str,
+    tenant_id: str,
+):
+    return events_collection.find_one(
+        {
+            "event_id": event_id,
+            "tenant_id": tenant_id,
+        }
+    )

@@ -5,6 +5,7 @@ from src.routes.auth_routes import router as auth_router
 from src.routes.endpoint_routes import router as endpoint_router
 from src.routes.webhook_routes import router as webhook_router
 from src.test_receiver.receiver import router as test_receiver_router
+from src.routes.event_routes import router as event_router
 
 
 app = FastAPI(
@@ -18,6 +19,7 @@ app.include_router(auth_router)
 app.include_router(endpoint_router)
 app.include_router(webhook_router)
 app.include_router(test_receiver_router)
+app.include_router(event_router)
 
 @app.get("/health")
 def health():
