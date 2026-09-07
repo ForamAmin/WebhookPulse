@@ -12,7 +12,7 @@ from src.repositories.event_repository import (
     get_event_by_dedupe_key,
 )
 from src.providers import provider_registry
-
+from src.services.queue_service import enqueue_event
 
 def ingest_webhook(
     endpoint_id: str,
@@ -112,6 +112,8 @@ def ingest_webhook(
             "event": existing_event,
             "duplicate": True,
         }
+    
+    enqueue_event(event_document)
 
     return {
         "event": event_document,

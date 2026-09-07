@@ -4,8 +4,8 @@ import hmac
 import json
 import requests
 
-ENDPOINT_ID = "ep_eAJNofge733LhhEODxyagQ"
-SIGNING_SECRET = "test-secret-123"
+ENDPOINT_ID = "ep_10U7kD-Ii5S56dIpd3CorA"
+SIGNING_SECRET = "test-secret"
 
 payload = {
     "event": "payment.captured",
