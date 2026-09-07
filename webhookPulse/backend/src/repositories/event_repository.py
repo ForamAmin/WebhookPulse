@@ -55,3 +55,54 @@ def get_event_details(
             "tenant_id": tenant_id,
         }
     )
+
+def get_events_by_tenant(tenant_id: str):
+    return list(
+        events_collection.find(
+            {
+                "tenant_id": tenant_id,
+            }
+        ).sort("created_at", -1)
+    )
+
+def get_event_stats_by_tenant(tenant_id: str):
+    pipeline = [
+        {
+            "$match": {
+                "tenant_id": tenant_id,
+            }
+        },
+        {
+            "$group": {
+                "_id": "$status",
+                "count": {
+                    "$sum": 1
+                },
+            }
+        },
+    ]
+
+    results = list(
+        events_collection.aggregate(pipeline)
+    )
+
+    stats = {
+        "total": 0,
+        "delivered": 0,
+        "processing": 0,
+        "retrying": 0,
+        "dlq": 0,
+        "received": 0,
+        "queued": 0,
+    }
+
+    for result in results:
+        event_status = result["_id"]
+        count = result["count"]
+
+        if event_status in stats:
+            stats[event_status] = count
+
+        stats["total"] += count
+
+    return stats

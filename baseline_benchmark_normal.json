@@ -1,0 +1,344 @@
+{
+  "benchmark": "baseline-normal",
+  "target": "http://127.0.0.1:8000/webhook",
+  "total_logical_events": 30,
+  "successful": 30,
+  "failed": 0,
+  "success_rate_percent": 100.0,
+  "average_latency_ms": 80.22286660658817,
+  "median_latency_ms": 78.43184983357787,
+  "min_latency_ms": 52.453499753028154,
+  "max_latency_ms": 124.2387997917831,
+  "events": [
+    {
+      "logical_event": 1,
+      "payment_id": "benchmark_pay_001",
+      "status_code": 200,
+      "latency_ms": 124.2387997917831,
+      "received_at": "2026-09-07T07:59:49.316293+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 2,
+      "payment_id": "benchmark_pay_002",
+      "status_code": 200,
+      "latency_ms": 57.41210002452135,
+      "received_at": "2026-09-07T07:59:49.374376+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 3,
+      "payment_id": "benchmark_pay_003",
+      "status_code": 200,
+      "latency_ms": 74.87510005012155,
+      "received_at": "2026-09-07T07:59:49.451739+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 4,
+      "payment_id": "benchmark_pay_004",
+      "status_code": 200,
+      "latency_ms": 76.37469982728362,
+      "received_at": "2026-09-07T07:59:49.527436+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 5,
+      "payment_id": "benchmark_pay_005",
+      "status_code": 200,
+      "latency_ms": 82.11310021579266,
+      "received_at": "2026-09-07T07:59:49.610498+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 6,
+      "payment_id": "benchmark_pay_006",
+      "status_code": 200,
+      "latency_ms": 116.6660999879241,
+      "received_at": "2026-09-07T07:59:49.727679+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 7,
+      "payment_id": "benchmark_pay_007",
+      "status_code": 200,
+      "latency_ms": 52.453499753028154,
+      "received_at": "2026-09-07T07:59:49.780349+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 8,
+      "payment_id": "benchmark_pay_008",
+      "status_code": 200,
+      "latency_ms": 76.91759988665581,
+      "received_at": "2026-09-07T07:59:49.857631+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 9,
+      "payment_id": "benchmark_pay_009",
+      "status_code": 200,
+      "latency_ms": 84.26769962534308,
+      "received_at": "2026-09-07T07:59:49.941893+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 10,
+      "payment_id": "benchmark_pay_010",
+      "status_code": 200,
+      "latency_ms": 93.33170019090176,
+      "received_at": "2026-09-07T07:59:50.035003+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 11,
+      "payment_id": "benchmark_pay_011",
+      "status_code": 200,
+      "latency_ms": 78.07030016556382,
+      "received_at": "2026-09-07T07:59:50.113202+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 12,
+      "payment_id": "benchmark_pay_012",
+      "status_code": 200,
+      "latency_ms": 68.65500006824732,
+      "received_at": "2026-09-07T07:59:50.182275+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 13,
+      "payment_id": "benchmark_pay_013",
+      "status_code": 200,
+      "latency_ms": 78.42729985713959,
+      "received_at": "2026-09-07T07:59:50.260789+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 14,
+      "payment_id": "benchmark_pay_014",
+      "status_code": 200,
+      "latency_ms": 68.66009999066591,
+      "received_at": "2026-09-07T07:59:50.330147+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 15,
+      "payment_id": "benchmark_pay_015",
+      "status_code": 200,
+      "latency_ms": 89.60509998723865,
+      "received_at": "2026-09-07T07:59:50.419563+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 16,
+      "payment_id": "benchmark_pay_016",
+      "status_code": 200,
+      "latency_ms": 69.52029978856444,
+      "received_at": "2026-09-07T07:59:50.490004+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 17,
+      "payment_id": "benchmark_pay_017",
+      "status_code": 200,
+      "latency_ms": 86.62059996277094,
+      "received_at": "2026-09-07T07:59:50.576073+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 18,
+      "payment_id": "benchmark_pay_018",
+      "status_code": 200,
+      "latency_ms": 78.43639981001616,
+      "received_at": "2026-09-07T07:59:50.655751+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 19,
+      "payment_id": "benchmark_pay_019",
+      "status_code": 200,
+      "latency_ms": 71.1536998860538,
+      "received_at": "2026-09-07T07:59:50.726861+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 20,
+      "payment_id": "benchmark_pay_020",
+      "status_code": 200,
+      "latency_ms": 88.8420999981463,
+      "received_at": "2026-09-07T07:59:50.816029+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 21,
+      "payment_id": "benchmark_pay_021",
+      "status_code": 200,
+      "latency_ms": 76.14680007100105,
+      "received_at": "2026-09-07T07:59:50.892757+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 22,
+      "payment_id": "benchmark_pay_022",
+      "status_code": 200,
+      "latency_ms": 79.96629970148206,
+      "received_at": "2026-09-07T07:59:50.972984+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 23,
+      "payment_id": "benchmark_pay_023",
+      "status_code": 200,
+      "latency_ms": 78.15660024061799,
+      "received_at": "2026-09-07T07:59:51.050466+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 24,
+      "payment_id": "benchmark_pay_024",
+      "status_code": 200,
+      "latency_ms": 79.34629963710904,
+      "received_at": "2026-09-07T07:59:51.130679+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 25,
+      "payment_id": "benchmark_pay_025",
+      "status_code": 200,
+      "latency_ms": 83.09269975870848,
+      "received_at": "2026-09-07T07:59:51.213376+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 26,
+      "payment_id": "benchmark_pay_026",
+      "status_code": 200,
+      "latency_ms": 89.6005998365581,
+      "received_at": "2026-09-07T07:59:51.303279+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 27,
+      "payment_id": "benchmark_pay_027",
+      "status_code": 200,
+      "latency_ms": 83.12189998105168,
+      "received_at": "2026-09-07T07:59:51.386909+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 28,
+      "payment_id": "benchmark_pay_028",
+      "status_code": 200,
+      "latency_ms": 66.24399963766336,
+      "received_at": "2026-09-07T07:59:51.453165+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 29,
+      "payment_id": "benchmark_pay_029",
+      "status_code": 200,
+      "latency_ms": 92.64500020071864,
+      "received_at": "2026-09-07T07:59:51.546791+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    },
+    {
+      "logical_event": 30,
+      "payment_id": "benchmark_pay_030",
+      "status_code": 200,
+      "latency_ms": 61.72450026497245,
+      "received_at": "2026-09-07T07:59:51.607991+00:00",
+      "response": {
+        "message": "webhook received",
+        "stored": true
+      }
+    }
+  ]
+}

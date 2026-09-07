@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timezone
 from fastapi.responses import JSONResponse
 import asyncio
+import time
 
 load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
@@ -35,6 +36,10 @@ app.add_middleware(
 BASE_URL = "https://mockgateway.com/api/base/razorpay-qhez1i"
 USERNAME = "rzp_test_ce8dg8vJOuaX8a"
 KEY_SECRET = "JeWY3svcs3ajLQz8gydE"
+CUSTOMER_BACKEND_URL = (
+    "http://127.0.0.1:8000/test-receiver/recover"
+)
+CUSTOMER_BACKEND_URL = "http://127.0.0.1:9000/recover"
 
 
 @app.get("/")
@@ -145,8 +150,77 @@ async def webhook(request: Request):
     print("Provider:", provider)
     print("Event type:", event_type)
     print("Stored MongoDB ID:", result.inserted_id)
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            backend_response = await client.post(
+                CUSTOMER_BACKEND_URL,
+                content=raw_body,
+                headers={
+                    "Content-Type": "application/json",
+                },
+            )
+
+        print(
+            "CUSTOMER BACKEND:",
+            backend_response.status_code,
+        )
+
+        if backend_response.status_code >= 400:
+            return JSONResponse(
+                status_code=backend_response.status_code,
+                content={
+                    "message": "customer backend failed",
+                    "backend_status": backend_response.status_code,
+                },
+            )
+
+    except Exception as e:
+        print("CUSTOMER BACKEND ERROR:", str(e))
+
+        return JSONResponse(
+            status_code=502,
+            content={
+                "message": "customer backend unavailable",
+            },
+        )
 
     return {
-    "message": "webhook received",
-    "stored": True
-}
+        "message": "webhook received",
+        "stored": True,
+    }
+
+RECOVERY_START = None
+RECOVERY_DURATION_SECONDS = 5
+
+
+@app.post("/test-receiver/controlled")
+async def controlled_receiver(request: Request):
+    global RECOVERY_START
+
+    await request.json()
+
+    now = time.perf_counter()
+
+    if RECOVERY_START is None:
+        RECOVERY_START = now
+        print("CONTROLLED RECEIVER: failure window started")
+
+    elapsed = now - RECOVERY_START
+
+    print(
+        f"CONTROLLED RECEIVER: elapsed={elapsed:.2f}s"
+    )
+
+    if elapsed < RECOVERY_DURATION_SECONDS:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "message": "simulated backend failure",
+                "elapsed_seconds": elapsed,
+            },
+        )
+
+    return {
+        "message": "backend recovered",
+        "elapsed_seconds": elapsed,
+    }

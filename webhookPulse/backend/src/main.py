@@ -21,7 +21,7 @@ app.include_router(webhook_router)
 app.include_router(test_receiver_router)
 app.include_router(event_router)
 
-@app.get("/health")
+@app.get("/")
 def health():
     return {
         "status": "ok",
