@@ -2,16 +2,23 @@
 
 > A provider-agnostic webhook reliability and observability layer built with FastAPI, Redis Streams, and MongoDB.
 
-WebhookPulse sits inline between a webhook provider and your backend, adding signature verification, deduplication, fast acknowledgement, async delivery, retries with backoff, a dead-letter queue, replay, and structural schema-drift detection — so webhook failures are visible and recoverable instead of reconstructed from logs.
+WebhookPulse sits inline between a webhook provider and your backend, adding signature verification, deduplication, fast acknowledgement, async delivery, retries with backoff, a dead-letter queue, and replay — so webhook failures are visible and recoverable instead of reconstructed from logs.
 
 ```
-Provider → WebhookPulse → Redis Queue → Worker → Your Backend
-                │
-                ├── Signature verification
-                ├── Idempotency / deduplication
-                ├── Retry + backoff + jitter
-                ├── Dead Letter Queue + Replay
-                └── Event Intelligence (schema drift)
+Provider
+   ↓
+WebhookPulse API
+   ├── verify
+   ├── deduplicate
+   ├── persist
+   └── enqueue
+          ↓
+    Redis Streams
+          ↓
+        Worker
+     (retry + backoff + jitter, DLQ on exhaustion)
+          ↓
+    Your Backend
 ```
 
 ## Why
@@ -27,7 +34,7 @@ Webhooks are simple until: backends return 500s, go temporarily down, deliver du
 - **Retry with Backoff + Jitter** — configurable max attempts, exponential delay.
 - **Dead Letter Queue** — exhausted events are inspectable and manually replayable, not lost.
 - **Event & Attempt History** — full lifecycle per event (status, retry count, correlation ID) and per delivery attempt (status code, response time/body, errors).
-- **Event Intelligence** — maintains a reference payload shape per `user + provider + event type` and flags structural drift (field added/removed, type changes).
+- **Event Intelligence (planned)** — structural schema-drift detection using a reference payload shape per `user + provider + event type`, flagging field additions/removals and type changes. Not yet implemented in the current build.
 
 ## Architecture
 
@@ -59,9 +66,19 @@ Webhook Provider → FastAPI (auth, endpoint resolution, signature check, idempo
 | Frontend | Vanilla HTML/CSS/JS |
 | Containerization | Docker |
 
+## Engineering Approach
+
+WebhookPulse was built by first reproducing webhook failure modes with a simple baseline implementation, then implementing reliability mechanisms to address the observed problems.
+
+```
+Observe failure → Understand behavior → Implement mechanism → Reproduce failure → Measure result
+```
+
+The project doesn't claim novelty for established patterns like retries, queues, idempotency, or DLQs. The goal is implementing and understanding these distributed-systems patterns, with structural webhook schema analysis as an additional planned capability.
+
 ## Experiments & Results
 
-Tested against a baseline (no reliability layer) across HTTP 500s, timeouts, duplicate delivery, and backend downtime. Baseline re-delivers duplicates and loses recovery visibility; WebhookPulse dedupes, queues, retries, and recovers via DLQ.
+Tested against a baseline (no reliability layer) across four controlled failure scenarios: HTTP 500 responses, timeouts, duplicate delivery, and backend unavailability. The baseline stored repeated deliveries independently and had no local idempotency or automatic recovery mechanism; WebhookPulse dedupes, queues, retries, and provides DLQ-based recovery.
 
 A 30-event acknowledgement benchmark:
 
@@ -71,7 +88,7 @@ A 30-event acknowledgement benchmark:
 | Avg ACK latency | 80.22 ms | 263.50 ms |
 | Median ACK latency | 78.43 ms | 248.46 ms |
 
-Higher ACK latency is expected — WebhookPulse does signature verification, idempotency checks, and persistence before acknowledging. This project optimizes for **reliability and observability under failure**, not raw ACK speed. A separate recovery test confirmed an event that failed twice (500, 500) was retried and marked `delivered` on the third attempt.
+Higher ACK latency is expected — WebhookPulse performs signature verification, idempotency checks, persistence, and queueing before acknowledging. This project optimizes for **reliability and observability under failure**, not raw ACK speed. A separate recovery test confirmed an event that failed twice (500, 500) was retried and marked `delivered` on the third attempt.
 
 ## API Overview
 
@@ -105,16 +122,28 @@ JWT_SECRET_KEY=<your-secret>
 JWT_ALGORITHM=HS256
 JWT_ACCESS_TOKEN_EXPIRE_MINUTES=60
 
-# Install & run
+# Install dependencies
 cd webhookpulse/backend
-python -m venv myenv && myenv\Scripts\activate   # Windows
+python -m venv myenv
+
+# Activate (Windows PowerShell)
+.\myenv\Scripts\Activate.ps1
+# Activate (macOS/Linux)
+source myenv/bin/activate
+
 pip install -r requirements.txt
+
+# Run the API
 python -m uvicorn src.main:app --reload
 ```
 
 API: `http://127.0.0.1:8000` · Docs: `http://127.0.0.1:8000/docs`
 
-Run the worker process separately to consume events from Redis Streams.
+In a separate terminal, run the worker to consume events from Redis Streams:
+
+```bash
+python -m src.worker
+```
 
 ## Project Structure
 
@@ -152,6 +181,3 @@ This is an MVP, not a commercial-platform clone:
 
 Redis consumer groups, production-grade scheduled retries, transactional outbox for Mongo→Redis consistency, encrypted secrets, rate limiting, horizontal worker scaling, more provider adapters, semantic payload analysis, alerting integrations, configurable retention.
 
-## License
-
-Add your chosen license here.
