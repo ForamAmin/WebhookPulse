@@ -1,0 +1,434 @@
+{
+  "benchmark": "webhookpulse-normal",
+  "target": "http://127.0.0.1:8000/webhooks/ep_TKYKRCdauTN-wYQYYIG8vw",
+  "total_logical_events": 30,
+  "successful": 30,
+  "failed": 0,
+  "success_rate_percent": 100.0,
+  "average_ack_latency_ms": 263.5007466965665,
+  "median_ack_latency_ms": 248.46119992434978,
+  "min_ack_latency_ms": 206.67289989069104,
+  "max_ack_latency_ms": 426.66999995708466,
+  "events": [
+    {
+      "logical_event": 1,
+      "provider_event_id": "benchmark_event_001",
+      "payment_id": "benchmark_pay_001",
+      "status_code": 200,
+      "latency_ms": 426.66999995708466,
+      "received_at": "2026-09-07T08:08:33.777382+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_1YFPDY2rpbUoA_1FR30eAA",
+        "correlation_id": "corr_RVSzGhp10WIb6SPYRQ2ehA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 2,
+      "provider_event_id": "benchmark_event_002",
+      "payment_id": "benchmark_pay_002",
+      "status_code": 200,
+      "latency_ms": 291.94770008325577,
+      "received_at": "2026-09-07T08:08:34.077290+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_IgiW9_saVh0JppT7jn33OQ",
+        "correlation_id": "corr_7ZHYAOsXg6CoXKwvg2-dEw",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 3,
+      "provider_event_id": "benchmark_event_003",
+      "payment_id": "benchmark_pay_003",
+      "status_code": 200,
+      "latency_ms": 220.49760026857257,
+      "received_at": "2026-09-07T08:08:34.298143+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_bK7q5c91jGGuezsgYsWMBg",
+        "correlation_id": "corr_TNoZkTsu4gjGMCkWuxFbhA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 4,
+      "provider_event_id": "benchmark_event_004",
+      "payment_id": "benchmark_pay_004",
+      "status_code": 200,
+      "latency_ms": 249.55249996855855,
+      "received_at": "2026-09-07T08:08:34.554036+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_zKtu0_AQcUXwo95QvSeLJg",
+        "correlation_id": "corr_OuCcMn9ptG8IYWCt12j12Q",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 5,
+      "provider_event_id": "benchmark_event_005",
+      "payment_id": "benchmark_pay_005",
+      "status_code": 200,
+      "latency_ms": 268.65100022405386,
+      "received_at": "2026-09-07T08:08:34.822271+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_KQyhZg6HZYj0ujrEohZmPA",
+        "correlation_id": "corr__BOjSugrm1sPlcSzyrvSTA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 6,
+      "provider_event_id": "benchmark_event_006",
+      "payment_id": "benchmark_pay_006",
+      "status_code": 200,
+      "latency_ms": 231.32240027189255,
+      "received_at": "2026-09-07T08:08:35.054145+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_x22kSoPV3HWsHENaQoCveg",
+        "correlation_id": "corr_I-5r4a4rP1sFFgBEEjZ82A",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 7,
+      "provider_event_id": "benchmark_event_007",
+      "payment_id": "benchmark_pay_007",
+      "status_code": 200,
+      "latency_ms": 238.74570010229945,
+      "received_at": "2026-09-07T08:08:35.294127+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_o7P7LjDinz6IHzOej80SqA",
+        "correlation_id": "corr_FaCmIt4L3pMoQv6Q__RddA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 8,
+      "provider_event_id": "benchmark_event_008",
+      "payment_id": "benchmark_pay_008",
+      "status_code": 200,
+      "latency_ms": 247.85599997267127,
+      "received_at": "2026-09-07T08:08:35.541330+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_HpSrs3P6P8_NxNmJuVLlXQ",
+        "correlation_id": "corr_odvp8r8oyXXl8yXyo3BuGQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 9,
+      "provider_event_id": "benchmark_event_009",
+      "payment_id": "benchmark_pay_009",
+      "status_code": 200,
+      "latency_ms": 230.6097000837326,
+      "received_at": "2026-09-07T08:08:35.772899+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_I6F2T-SuuNbi76ykizDVcA",
+        "correlation_id": "corr_DoJpLrl6rHPQxdpCFlv9Fg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 10,
+      "provider_event_id": "benchmark_event_010",
+      "payment_id": "benchmark_pay_010",
+      "status_code": 200,
+      "latency_ms": 206.67289989069104,
+      "received_at": "2026-09-07T08:08:35.980684+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_zrg2Sih6Ybl_Y2dCgrnLEA",
+        "correlation_id": "corr_yCqD9psvrjkfiDBwwLKcdQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 11,
+      "provider_event_id": "benchmark_event_011",
+      "payment_id": "benchmark_pay_011",
+      "status_code": 200,
+      "latency_ms": 224.05910026282072,
+      "received_at": "2026-09-07T08:08:36.205885+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt__q6JNTbKkLePqqtwDBYihA",
+        "correlation_id": "corr_uGEMKNOaWe823NoxXohx2A",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 12,
+      "provider_event_id": "benchmark_event_012",
+      "payment_id": "benchmark_pay_012",
+      "status_code": 200,
+      "latency_ms": 240.4836001805961,
+      "received_at": "2026-09-07T08:08:36.447049+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_Gd7kn0kxviDQ0VDuG-WtAw",
+        "correlation_id": "corr_C7N5cIJOeVymDfpcN0UdhQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 13,
+      "provider_event_id": "benchmark_event_013",
+      "payment_id": "benchmark_pay_013",
+      "status_code": 200,
+      "latency_ms": 249.0663998760283,
+      "received_at": "2026-09-07T08:08:36.699081+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_8qeeaEXRXiNeBavNT2zPmQ",
+        "correlation_id": "corr_6N7WU7ZBIJzOE6IFuTvrzA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 14,
+      "provider_event_id": "benchmark_event_014",
+      "payment_id": "benchmark_pay_014",
+      "status_code": 200,
+      "latency_ms": 303.3838998526335,
+      "received_at": "2026-09-07T08:08:37.002448+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_EQBt3tfPt9vG0QQjflvIsA",
+        "correlation_id": "corr_rZotWffANIuo8IqOm-q5vA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 15,
+      "provider_event_id": "benchmark_event_015",
+      "payment_id": "benchmark_pay_015",
+      "status_code": 200,
+      "latency_ms": 243.18300001323223,
+      "received_at": "2026-09-07T08:08:37.245626+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_CTJ6JuTipd8E8zfCI3XplQ",
+        "correlation_id": "corr_R-TmePPpbDGDNO3D1SyLkg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 16,
+      "provider_event_id": "benchmark_event_016",
+      "payment_id": "benchmark_pay_016",
+      "status_code": 200,
+      "latency_ms": 320.2161001972854,
+      "received_at": "2026-09-07T08:08:37.566485+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_-d3fH2CdPvuZ0F82erkjQg",
+        "correlation_id": "corr_08FSeEL9dm_y8AtxxRQU1A",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 17,
+      "provider_event_id": "benchmark_event_017",
+      "payment_id": "benchmark_pay_017",
+      "status_code": 200,
+      "latency_ms": 249.32709988206625,
+      "received_at": "2026-09-07T08:08:37.816636+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_8p9L_6qdY7U6ajhG9Bixzg",
+        "correlation_id": "corr_84gNjnEsF4Ck3_G3o2MpXw",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 18,
+      "provider_event_id": "benchmark_event_018",
+      "payment_id": "benchmark_pay_018",
+      "status_code": 200,
+      "latency_ms": 229.57440000027418,
+      "received_at": "2026-09-07T08:08:38.046253+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_BuaMhTtDwK8i2BGu-uCXXw",
+        "correlation_id": "corr_YimmI9zEl3yuByL1kOFjxg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 19,
+      "provider_event_id": "benchmark_event_019",
+      "payment_id": "benchmark_pay_019",
+      "status_code": 200,
+      "latency_ms": 237.2612999752164,
+      "received_at": "2026-09-07T08:08:38.283793+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_QC7BX5ZS9gJdzl63Omuf-A",
+        "correlation_id": "corr_67JIDRzEdjOoqdWyaAqftQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 20,
+      "provider_event_id": "benchmark_event_020",
+      "payment_id": "benchmark_pay_020",
+      "status_code": 200,
+      "latency_ms": 300.6616998463869,
+      "received_at": "2026-09-07T08:08:38.585041+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_qcrJr0wwB9W0MC1fmmUxGA",
+        "correlation_id": "corr_CTOo8vdCM_oFC8lkYzKlFQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 21,
+      "provider_event_id": "benchmark_event_021",
+      "payment_id": "benchmark_pay_021",
+      "status_code": 200,
+      "latency_ms": 242.9296001791954,
+      "received_at": "2026-09-07T08:08:38.828229+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_Mth0p0Y7_IGcjIAZAPBTsA",
+        "correlation_id": "corr_vYaUIHktjMY65LV-8F2CpQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 22,
+      "provider_event_id": "benchmark_event_022",
+      "payment_id": "benchmark_pay_022",
+      "status_code": 200,
+      "latency_ms": 309.6328000538051,
+      "received_at": "2026-09-07T08:08:39.137507+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_UOmntkzB6KcJ-k4C2eVLww",
+        "correlation_id": "corr_qU9naRE6N6NPKyzYM4LXaA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 23,
+      "provider_event_id": "benchmark_event_023",
+      "payment_id": "benchmark_pay_023",
+      "status_code": 200,
+      "latency_ms": 245.9566998295486,
+      "received_at": "2026-09-07T08:08:39.384516+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_AXig8anZCS6_sn99uvf_pw",
+        "correlation_id": "corr_QiBi3vMrP2XGRUqr7kWR5g",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 24,
+      "provider_event_id": "benchmark_event_024",
+      "payment_id": "benchmark_pay_024",
+      "status_code": 200,
+      "latency_ms": 249.55399986356497,
+      "received_at": "2026-09-07T08:08:39.634618+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_UM684Vc35sxqMB5D9sFYRQ",
+        "correlation_id": "corr_uruoufVemis8cdnWLQn6Hg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 25,
+      "provider_event_id": "benchmark_event_025",
+      "payment_id": "benchmark_pay_025",
+      "status_code": 200,
+      "latency_ms": 403.0536999925971,
+      "received_at": "2026-09-07T08:08:40.037340+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_uqXMu0DuCiJLthQLWOYTAA",
+        "correlation_id": "corr_7fr60hhNpwjlICQ4RO4ljQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 26,
+      "provider_event_id": "benchmark_event_026",
+      "payment_id": "benchmark_pay_026",
+      "status_code": 200,
+      "latency_ms": 255.31510030850768,
+      "received_at": "2026-09-07T08:08:40.292954+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_BHsw8za8Mcob0wBfnZDsHw",
+        "correlation_id": "corr_q8xwYyC8espwC2dwHWItKg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 27,
+      "provider_event_id": "benchmark_event_027",
+      "payment_id": "benchmark_pay_027",
+      "status_code": 200,
+      "latency_ms": 259.7861001268029,
+      "received_at": "2026-09-07T08:08:40.553131+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_WMdA_0r2ECstfUcSS9NDlg",
+        "correlation_id": "corr_cs_EW79M-RK_sWsuLBq8uQ",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 28,
+      "provider_event_id": "benchmark_event_028",
+      "payment_id": "benchmark_pay_028",
+      "status_code": 200,
+      "latency_ms": 225.34629981964827,
+      "received_at": "2026-09-07T08:08:40.778367+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_lFBcDbHrMjCvUcbvVehWKw",
+        "correlation_id": "corr_aiFNPxNo2hPcotOkoxAjyA",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 29,
+      "provider_event_id": "benchmark_event_029",
+      "payment_id": "benchmark_pay_029",
+      "status_code": 200,
+      "latency_ms": 286.311199888587,
+      "received_at": "2026-09-07T08:08:41.065709+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt_5Hs-FM9r0eos7Z6fB8_fcw",
+        "correlation_id": "corr_IE2_E1kYBKPP8NN2aOevFg",
+        "duplicate": false
+      }
+    },
+    {
+      "logical_event": 30,
+      "provider_event_id": "benchmark_event_030",
+      "payment_id": "benchmark_pay_030",
+      "status_code": 200,
+      "latency_ms": 217.3947999253869,
+      "received_at": "2026-09-07T08:08:41.283237+00:00",
+      "response": {
+        "message": "webhook received",
+        "event_id": "evt__LrXGN6gNlK2uccxRvBaoQ",
+        "correlation_id": "corr_EpnLO7JEA5ZDsT22_Kd2bw",
+        "duplicate": false
+      }
+    }
+  ]
+}
